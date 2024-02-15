@@ -4,4 +4,4 @@ export const chunkArray = (array: any[], chunkSize: number) => {
     result.push(array.slice(i, i + chunkSize));
   }
   return result;
-}
+};

@@ -8,7 +8,7 @@
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:prod": "node dist/main",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"./**/*.ts\""
   },
   "engines": {
     "node": "20.10.0"

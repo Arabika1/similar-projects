@@ -7,7 +7,9 @@ export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
   @Get('search')
-  private async getRepositories(@Query('url') url: string): Promise<IResponse[]> {
+  private async getRepositories(
+    @Query('url') url: string,
+  ): Promise<IResponse[]> {
     return this.searchService.getRepositories(url);
   }
 }
