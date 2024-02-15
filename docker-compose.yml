@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nest-app:
+    container_name: be_test_task_app
+    restart: unless-stopped
+    build:
+      context: packages/backend
+      dockerfile: Dockerfile
+    environment:
+      GITHUB_API_KEY: ${GITHUB_API_KEY}
+      APP_PORT: ${APP_PORT}
+      NODE_ENV: ${NODE_ENV}
+    ports:
+      - ${APP_PORT}:${APP_PORT}
