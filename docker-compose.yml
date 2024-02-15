@@ -1,6 +1,6 @@
 version: '3'
 services:
-  nest-app:
+  backend-app:
     container_name: be_test_task_app
     restart: unless-stopped
     build:
@@ -8,7 +8,20 @@ services:
       dockerfile: Dockerfile
     environment:
       GITHUB_API_KEY: ${GITHUB_API_KEY}
-      APP_PORT: ${APP_PORT}
+      BACKEND_APP_PORT: ${BACKEND_APP_PORT}
       NODE_ENV: ${NODE_ENV}
     ports:
-      - ${APP_PORT}:${APP_PORT}
+      - ${BACKEND_APP_PORT}:${BACKEND_APP_PORT}
+    volumes:
+      - ./packages/backend:/app
+  frontend-app:
+    container_name: fe_test_task_app
+    restart: unless-stopped
+    build:
+      context: packages/frontend
+      dockerfile: Dockerfile
+    ports:
+      - ${FRONTEND_APP_PORT}:${FRONTEND_APP_PORT}
+    volumes:
+      - ./packages/frontend:/app
+

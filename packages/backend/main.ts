@@ -10,7 +10,7 @@ async function bootstrap() {
   const logger = app.get<Logger>(Logger);
   const configService = app.get(ConfigService);
 
-  const appPort = configService.get<number>('APP_PORT', 3000);
+  const appPort = configService.get<number>('BACKEND_APP_PORT', 80);
 
   app.useLogger(logger);
 

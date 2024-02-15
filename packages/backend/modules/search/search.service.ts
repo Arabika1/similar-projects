@@ -33,10 +33,15 @@ export class SearchService {
   
 
   async getRepositories(url: string): Promise<IResponse[]> {
+    try {
     const contributors = await this.githubService.getRepositoryContributors(url)
     const repositories = await this.githubService.getUsersRepositories(contributors)
-
     const groupedRepositories = this.groupRepositories(repositories)
+
     return groupedRepositories.slice(0, 5)
+    } catch(e) {
+      this.logger.error(e)
+      return []
+    }
   }
 }
